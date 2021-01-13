@@ -12,11 +12,15 @@ You need to have docker installed on your system.
 4. add the following environment variables to the file
 
 ```shell
-DJANGO_SECRET_KEY=Just_some_random_text
+DJANGO_SECRET_KEY=<YOUR_DJANGO_SECRET_KEY>
 DJANGO_ALLOWED_HOSTS=*
 DJANGO_DEBUG=True
 POSTGRES_PASSWORD=password
 POSTGRES_USER=postgres
+TWITTER_CONSUMER_KEY=<YOUR KEY>
+TWITTER_CONSUMER_SECRET=<YOUR SECRET>
+TWITTER_ACCESS_TOKEN_KEY=<YOUR KEY>
+TWITTER_ACCESS_TOKEN_SECRET=<YOUR SECRET>
 ```
 
 5. Build and run the containers
