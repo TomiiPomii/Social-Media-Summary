@@ -1,18 +1,22 @@
-{% extends 'pages/_base.html' %}
-{% load static %}
-{% block content %}
+{% extends 'pages/_base.html' %} {% load static %} {% block content %}
 <div>
-    <h1>Content of summary home</h1>
-    {% for user in data %}
-        <div class="card m-3" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title">{{user.type}}</h5>
-                    <p>Name: {{user.user_name}}</p>
-                    <p>Url: {{user.url}}</p>
-                    <p>Id: {{user.user_id}}</p>
-                    <a href="#" class="btn btn-primary">Go to the profile</a>
-            </div>
+  <h1 class="text-center">Content of result</h1>
+  <div class="container-fluid">
+    <div class='row justify-content-between p-3'>
+      {% for user in data %}
+      <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center">
+        <div class="card custom-card m-3 text-dark" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">{{user.type}}</h5>
+            <p>Name: {{user.user_name}}</p>
+            <p>Url: {{user.url}}</p>
+            <p>Id: {{user.user_id}}</p>
+            <a href="#" class="btn btn-grad">Go to the profile</a>
+          </div>
         </div>
-    {% endfor %}
+      </div>
+        {% endfor %}
+    </div>
+  </div>
 </div>
 {% endblock content %}
