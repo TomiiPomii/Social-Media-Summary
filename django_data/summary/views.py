@@ -17,6 +17,10 @@ class HomePageView(View):
         if form.is_valid():
             urls = {"twitter": form["twitter_url"].value()}
             data = getAllData(urls)
-            return render(request, "summary/result.html", {"data": data})
+            return render(
+                request,
+                "summary/result.html",
+                {"data": data, "name": data[0].user_name},
+            )
 
         return render(request, self.template_name, {"form": form})

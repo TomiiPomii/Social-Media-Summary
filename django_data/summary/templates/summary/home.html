@@ -3,7 +3,7 @@
 {% load static %}
 {% block content %}
 <div>
-    <h1>Content of summary home</h1>
+    <h1>Enter a users profile url</h1>
     <form action="{% url 'home' %}"  method="post">
         {% csrf_token %}
         {{ form|crispy }}
