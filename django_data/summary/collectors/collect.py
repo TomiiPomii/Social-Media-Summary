@@ -1,3 +1,7 @@
+from django.conf import settings
+import twitter
+
+
 class SocialMediaUser:
     """This object is returned by all the socal media scrapers
     """
@@ -7,6 +11,9 @@ class SocialMediaUser:
         self.type = social_media_type
         self.user_name = user_name
         self.user_id = user_id
+
+    def __str__(self):
+        return f"<SocialMediaUser url={self.url} type={self.type} name={self.user_name} id={self.user_id} >"
 
 
 def getAllData(urls):
@@ -31,7 +38,17 @@ def twitter_data(url):
     Returns:
         [object]: Returns a SocialMediaUser object with the users twitter data.
     """
-    return SocialMediaUser("Twitter", url,"Test_User", 1234)
+    api = twitter.Api(consumer_key=settings.TWITTER_CONSUMER_KEY,
+                      consumer_secret=settings.TWITTER_CONSUMER_SECRET,
+                      access_token_key=settings.TWITTER_ACCESS_TOKEN_KEY,
+                      access_token_secret=settings.TWITTER_ACCESS_TOKEN_SECRET)
+
+    user_screen_name = url.split("/")[-1]
+    user = api.GetUser(screen_name=user_screen_name)
+    print("Name:", user.name)
+    print("Number of followers:", user.followers_count)
+    print("Number of friends:", user.friends_count)
+    return SocialMediaUser("Twitter", url, user.name, user.id)
 
 
 def instagram_data(url):
@@ -43,4 +60,4 @@ def instagram_data(url):
     Returns:
         [object]: Returns a SocialMediaUser object with the users instagram data.
     """
-    return SocialMediaUser("Instagram", url,"Instagram_User", 9876)
+    return SocialMediaUser("Instagram", url, "Instagram_User", 9876)

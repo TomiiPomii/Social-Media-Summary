@@ -150,3 +150,9 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 db_from_env = dj_database_url.config()
 DATABASES['default'].update(db_from_env)
 DATABASES['default']['CONN_MAX_AGE'] = 500
+
+
+TWITTER_CONSUMER_KEY = os.environ.get('TWITTER_CONSUMER_KEY')
+TWITTER_CONSUMER_SECRET = os.environ.get('TWITTER_CONSUMER_SECRET')
+TWITTER_ACCESS_TOKEN_KEY = os.environ.get('TWITTER_ACCESS_TOKEN_KEY')
+TWITTER_ACCESS_TOKEN_SECRET = os.environ.get('TWITTER_ACCESS_TOKEN_SECRET')
