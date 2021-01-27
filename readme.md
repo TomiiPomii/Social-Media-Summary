@@ -1,6 +1,6 @@
 # Social Media Summary
 
-!! add text here
+The goal of this project is to provide a overview of a social media user. Enter the url to a user profile to get information about this user.
 
 ## How to develope
 
@@ -43,10 +43,6 @@ docker-compose exec web python manage.py createsuperuser
 ```shell
 docker-compose exec web python manage.py test
 ```
-
-## How to contribute
-
-!! add text here
 
 ## How to deploy
 
