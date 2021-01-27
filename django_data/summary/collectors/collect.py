@@ -1,15 +1,31 @@
-from django.conf import settings
 import twitter
+from django.conf import settings
 
 
 class SocialMediaUser:
     """This object is returned by all the socal media scrapers"""
 
-    def __init__(self, social_media_type, url, user_name=None, user_id=None):
+    def __init__(
+        self,
+        social_media_type: str,
+        url: str,
+        user_name: str = None,
+        user_id: str = None,
+        followers: int = None,
+        following: int = None,
+        profile_foto: str = None,
+        best_post: str = None,
+        creation: str = None,
+    ) -> None:
         self.url = url
         self.type = social_media_type
         self.user_name = user_name
         self.user_id = user_id
+        self.followers = followers
+        self.following = following
+        self.profile_foto = profile_foto
+        self.best_post = best_post
+        self.creation = creation
 
     def __str__(self):
         return f"<SocialMediaUser url={self.url} type={self.type} name={self.user_name} id={self.user_id} >"
@@ -48,7 +64,16 @@ def twitter_data(url):
     if not user_screen_name:
         return SocialMediaUser("Twitter", url, "Not found", "Not found")
     user = api.GetUser(screen_name=user_screen_name)
-    print("Name:", user.name)
-    print("Number of followers:", user.followers_count)
-    print("Number of friends:", user.friends_count)
-    return SocialMediaUser("Twitter", url, user.name, user.id)
+    creation = user.created_at
+    if creation:
+        creation = user.created_at.split("+")[0]
+    return SocialMediaUser(
+        "Twitter",
+        url,
+        user_name=user.name,
+        user_id=user.id,
+        followers=user.followers_count,
+        following=user.friends_count,
+        profile_foto=user.profile_image_url,
+        creation=creation,
+    )

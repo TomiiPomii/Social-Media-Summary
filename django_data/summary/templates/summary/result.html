@@ -5,13 +5,23 @@
     <div class="row justify-content-between p-3">
       {% for user in data %}
       <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center">
-        <div class="card custom-card m-3 text-dark" style="width: 18rem;">
+        <div class="card custom-card m-3 text-dark" style="width: 20rem;">
           <div class="card-body">
-            <h5 class="card-title">{{user.type}}</h5>
+            <div class="text-center mb-4">
+              <h5 class="card-title">Type: {{user.type}}</h5>
+              {% if user.profile_foto %}
+                <img src="{{user.profile_foto}}" alt="profile_foto" />
+              {% endif %}
+            </div>
             <p>Name: {{user.user_name}}</p>
             <p>Url: {{user.url}}</p>
             <p>Id: {{user.user_id}}</p>
-            <a href="#" class="btn btn-primary">Go to the profile</a>
+            <p>Followers: {{user.followers}}</p>
+            <p>Following: {{user.following}}</p>
+            <p>Creation date: {{user.creation}}</p>
+            <a href="{{user.url}}" target="_blank" class="btn btn-primary">
+              Go to the profile
+            </a>
           </div>
         </div>
       </div>
