@@ -14,7 +14,6 @@ class SocialMediaUser:
         followers: int = None,
         following: int = None,
         profile_foto: str = None,
-        best_post: str = None,
         creation: str = None,
     ) -> None:
         self.url = url
@@ -24,7 +23,6 @@ class SocialMediaUser:
         self.followers = followers
         self.following = following
         self.profile_foto = profile_foto
-        self.best_post = best_post
         self.creation = creation
 
     def __str__(self):

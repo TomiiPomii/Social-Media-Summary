@@ -56,7 +56,9 @@ heroku create <app_name>
 heroku stack:set container --app=<app_name>
 ```
 
-2. Connect your app with your git repository
+2. Login to your heroku account and open you app settings. Add the enviroment veriable there (the same you have in your .env file).
+
+3. Connect your app with your git repository
 
 ```shell
 heroku git:remote -a <app_name>
@@ -65,11 +67,11 @@ git push heroku deploy:master
 heroku addons:create heroku-postgresql:hobby-dev
 ```
 
-3. After the image is build run the following commands:
+4. After the image is build run the following commands:
 
 ```shell
 heroku run python manage.py migrate
 heroku run python manage.py createsuperuser
 ```
 
-4. Your app is now online here: https://<app_name>.herokuapp.com/
+5. Your app is now online here: https://<app_name>.herokuapp.com/
